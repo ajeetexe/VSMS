@@ -56,7 +56,7 @@ ROOT_URLCONF = 'VSMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'app/template',BASE_DIR / 'template'],
+        'DIRS': [BASE_DIR / 'app/template',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,4 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static',]
+STATICFILES_DIRS = [BASE_DIR / 'app/static',]
+
+MEDIA_ROOT = BASE_DIR / 'media'.replace('\\','/')
+MEIDA_URL = 'media'

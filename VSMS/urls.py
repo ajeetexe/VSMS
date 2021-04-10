@@ -16,7 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+from django.contrib.auth.views import LoginView, LogoutView
+from django.conf.urls.static import static
+from django.conf import settings
 urlpatterns = [
-    path('',views.index),
+    path('',views.index,name='home'),
+    path('register/',views.RegisterUserView.as_view(),name='register'),
+    path('login/', LoginView.as_view(success_url='/', template_name = 'home/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(template_name='home/logout.html'), name='logout'),
     path('admin/', admin.site.urls),
-]
+    path('accounts/profile/',views.profilePage,name = 'profile')
+] 
+
+
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,108 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+{% load static %}
+<div id="carouselExampleSlidesOnly" class="carousel slide container-fluid" data-ride="carousel">
+  <div class="carousel-inner">
+    {% for object in obj %}
+    <div class="carousel-item {% if forloop.counter0 == 0%} active {% endif %}">
+      <img src="{{object.image.url}}" style="height: 700px" class="img-fluid d-block w-100 m-auto">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="animate_animated">{{object.title}}</h1>
+        {{object.subtitle}}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="container mt-5">
+  <h1 class="text-center text-primary border-bottom border-success">Our Services</h1>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"><img
+        src="{% static 'app/img/services/periodic_maintenance_big.png' %}"></div>
+    <div class="p-2">
+      <h3>Preventive Maintance Service</h3>
+      <p>To keep your car fine and running, we provide a regular check-up which will avoid your car from facing bigger
+        problems. Also, cheering up your car with routine services will lead to better performance in return.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"><img src="{% static 'app/img/services/body_repair_big.png' %}"></div>
+    <div class="p-2">
+      <h3>Body Repair</h3>
+      <p>It matters to us that your car takes you to your destinations safely as well as smoothly and we are here to
+        take care of it for you.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"> <img src="{% static 'app/img/services/accesories_big.png' %}"></div>
+    <div class="p-2">
+      <h3>Accesories</h3>
+      <p>It matters to us that your car takes you to your destinations safely as well as smoothly and we are here to
+        take care of it for you.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"><img src="{% static 'app/img/services/air_condition_big.png' %}">
+    </div>
+    <div class="p-2">
+      <h3>Air Coditioning System</h3>
+      <p>It matters to us that your car takes you to your destinations safely as well as smoothly and we are here to
+        take care of it for you.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"><img src="{% static 'app/img/services/car_care_big.png' %}"></div>
+    <div class="p-2">
+      <h3>Car Care</h3>
+      <p>It matters to us that your car takes you to your destinations safely as well as smoothly and we are here to
+        take care of it for you.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"><img src="{% static 'app/img/services/car_jack_big.png' %}"></div>
+    <div class="p-2">
+      <h3>Running Repairs </h3>
+      <p>It matters to us that your car takes you to your destinations safely as well as smoothly and we are here to
+        take care of it for you.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"><img src="{% static 'app/img/services/maintenance_pck_big.png' %}">
+    </div>
+    <div class="p-2">
+      <h3>Service Maintance Package</h3>
+      <p>It matters to us that your car takes you to your destinations safely as well as smoothly and we are here to
+        take care of it for you.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row border border-warning mt-3">
+    <div class="p-2 border-right border-warning"><img src="{% static 'app/img/services/wheel_big.png' %}"></div>
+    <div class="p-2">
+      <h3>Wheel Care</h3>
+      <p>The wheels of your car need regular attention and care. Wheels get damaged due to bad roads and pot holes
+        leading to misalignment.</p>
+      <a class="btn btn-primary" href="">Request Service</a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
