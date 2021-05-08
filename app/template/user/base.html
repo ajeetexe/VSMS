@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                </button>
+            </div>
+            <div class="img bg-wrap text-center py-4" style="background-image: url('/static/app/img/bg_1.jpg');">
+                <div class="user-logo">
+                    <div class="img" style="background-image: url('/static/app/img/profile.png');"></div>
+                    <h3>{{user.first_name}} {{user.last_name}}</h3>
+                </div>
+            </div>
+            <ul class="list-unstyled components mb-5">
+                <li class="active"><a href="{% url 'user' %}"><span class="fa fa-home mr-3"></span> Home</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-taxi mr-3"></span>Service Request</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-question-circle mr-3"></span>Service status</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-history mr-3"></span>Service History</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-user mr-3"></span>Profile</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}"><span class="fa fa-sign-out mr-3"></span> Log Out</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <h1 class="text-primary">{% block title %} {% endblock %}</h1>
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+
+
+    <script src="{% static 'app/js/jquery-3.4.1.slim.js' %}"></script>
+    <script src="{% static 'app/js/popper.min.js' %}"></script>
+    <script src="{% static 'app/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app/js/main.js' %}"></script>
+</body>
+
+</html>

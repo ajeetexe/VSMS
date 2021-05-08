@@ -1,0 +1,8 @@
+{% extends 'user/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <h3>welcome back {{user.get_full_name}}</h2>
+    <p>There is no request pending</p>
+{% endblock %}

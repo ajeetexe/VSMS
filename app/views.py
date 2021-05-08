@@ -25,4 +25,8 @@ def profilePage(request):
     if request.user.is_superuser:
         return redirect('/admin/')
     else:
-        return redirect('home')
+        return redirect('user')
+
+@login_required(login_url='/login/')
+def userProfile(request):
+    return render(request=request, template_name='user/home.html')

@@ -25,7 +25,8 @@ urlpatterns = [
     path('login/', LoginView.as_view(success_url='/', template_name = 'home/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='home/logout.html'), name='logout'),
     path('admin/', admin.site.urls),
-    path('accounts/profile/',views.profilePage,name = 'profile')
+    path('accounts/profile/',views.profilePage,name = 'account'),
+    path('user/',views.userProfile,name='user'),
 ] 
 
 
