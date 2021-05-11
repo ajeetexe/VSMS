@@ -1,9 +1,13 @@
-{% extends 'user/base.html'}
-
-{% block title %} Service Request {% endtitle %}
+{% extends 'user/base.html' %}
+{% load bootstrap4 %}
+{% block title %} Service Request {% endblock %}
 
 {% block content %}
-<form action="" method="post">
-    
-</form>
+<div class="container border border-gray rounded bg-dark text-white">
+    <form class="p-5" action="" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button "Submit" button_type="submit" button_class="btn btn-success btn-block" %}
+    </form>
+</div>
 {% endblock %}

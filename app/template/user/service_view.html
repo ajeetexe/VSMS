@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container border border-success mt-5">
+        <a class="btn btn-primary m-3" href="{% url 'user' %}">Home</a>
+        <a class="btn btn-primary m-3" href="{% url 'user' %}">Print</a>
+        <table class="table">
+            <tr>
+                <th>Service Request No</th>
+                <td>{{servicerequest.service_request_no}}</td>
+            </tr>
+            <tr>
+                <th>User:</th>
+                <td>{{servicerequest.user}}</td>
+            </tr>
+            <tr>
+                <th>Owner Name</th>
+                <td>{{servicerequest.vehicle_owner_name}}</td>
+            </tr>
+            <tr>
+                <th>Service Request Date</th>
+                <td>{{servicerequest.service_request_date}}</td>
+            </tr>
+            <tr>
+                <th>Vehicle Type</th>
+                <td>{{servicerequest.get_vehicle_type_display}}</td>
+            </tr>
+            <tr>
+                <th>Vehicle Name</th>
+                <td>{{servicerequest.vehicle_name}}</td>
+            </tr>
+            <tr>
+                <th>Vehicle Number</th>
+                <td>{{servicerequest.vehicle_number}}</td>
+            </tr>
+            <tr>
+                <th>License Number</th>
+                <td>{{servicerequest.license_number}}</td>
+            </tr>
+            <tr>
+                <th>Type of services</th>
+                <td>{{servicerequest.get_type_of_service_display}}</td>
+            </tr>
+            <tr>
+                <th>Owner Address</th>
+                <td>{{servicerequest.owner_address}}</td>
+            </tr>
+            <tr>
+                <th>Appointment Date</th>
+                <td>{{servicerequest.appointment_date}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{servicerequest.status}}</td>
+            </tr>
+            <tr>
+                <th>Service Charge</th>
+                <td>&#8377; {{servicerequest.service_charge}}</td>
+            </tr>
+            <tr>
+                <th>Parts Charge</th>
+                <td>&#8377; {{servicerequest.parts_charge}}</td>
+            </tr>
+            <tr>
+                <th>Total Charge</th>
+                <td>&#8377; {{servicerequest.sum}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

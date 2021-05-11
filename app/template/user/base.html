@@ -23,28 +23,24 @@
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                 </button>
             </div>
-            <div class="img bg-wrap text-center py-4" style="background-image: url('/static/app/img/bg_1.jpg');">
+            <div class="img bg-wrap text-center py-4" style="background-image: url('{{user.userprofile.background_pic.url}}');">
                 <div class="user-logo">
-                    <div class="img" style="background-image: url('/static/app/img/profile.png');"></div>
-                    <h3>{{user.first_name}} {{user.last_name}}</h3>
+                    <div class="img" style="background-image: url('{{user.userprofile.profile_pic.url}}');"></div>
+                    <h3>{{user.get_full_name}}</h3> 
                 </div>
             </div>
             <ul class="list-unstyled components mb-5">
-                <li class="active"><a href="{% url 'user' %}"><span class="fa fa-home mr-3"></span> Home</a>
+                <li class="{% if request.resolver_match.view_name == 'user' %} active {% endif %}">
+                    <a href="{% url 'user' %}"><span class="fa fa-home mr-3"></span> Home</a>
                 </li>
-                <li>
-                    <a href="#"><span class="fa fa-taxi mr-3"></span>Service Request</a>
+                <li class="{% if request.resolver_match.view_name == 'service_request' %} active {% endif %}">
+                    <a href="{% url 'service_request' %}"><span class="fa fa-taxi mr-3"></span>Service Request</a>
                 </li>
-                <li>
-                    <a href="#"><span class="fa fa-question-circle mr-3"></span>Service status</a>
+                
+                <li class="{% if request.resolver_match.view_name == 'profile' %} active {% endif %}">
+                    <a href="{% url 'profile' slug=user %}"><span class="fa fa-user mr-3"></span>Profile</a>
                 </li>
-                <li>
-                    <a href="#"><span class="fa fa-history mr-3"></span>Service History</a>
-                </li>
-                <li>
-                    <a href="#"><span class="fa fa-user mr-3"></span>Profile</a>
-                </li>
-                <li>
+                <li class="{% if request.resolver_match.view_name == 'logout' %} active {% endif %}">
                     <a href="{% url 'logout' %}"><span class="fa fa-sign-out mr-3"></span> Log Out</a>
                 </li>
             </ul>
@@ -53,7 +49,22 @@
 
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5 pt-5">
-            <h1 class="text-primary">{% block title %} {% endblock %}</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#"><h1 class="text-primary">{% block title %} {% endblock %}</h1></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav  ml-auto">
+                        {% if request.resolver_match.view_name == 'profile' %}
+                      <a class="nav-link {% if request.resolver_match.view_name == 'home' %} active {% endif %}" href="{% url 'update_profile' %}">Update Profile</a>
+                      <a class="nav-link {% if request.resolver_match.view_name == 'home' %} active {% endif %}" href="{% url 'change_password' %}">Change Password</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </nav>
             {% block content %} {% endblock %}
         </div>
     </div>

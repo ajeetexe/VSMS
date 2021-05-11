@@ -3,6 +3,29 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
+<div class="container">
     <h3>welcome back {{user.get_full_name}}</h2>
-    <p>There is no request pending</p>
+        {% if service_request.count > 0 %}
+        <table class="table">
+            <tr>
+                <th>Service Request No</th>
+                <th>Owner Name</th>
+                <th>Status</th>
+            </tr>
+        {% for x in service_request %}
+                <tr>
+                    <td>{{x.service_request_no}}</td>
+                    <td>{{x.vehicle_owner_name}}</td>
+                    <td>{{x.status}}</td>
+                    <td><a href="{% url 'service_view' x.service_request_no %}">View</a></td>  
+                    <td><a href="{% url 'service_delete' x.service_request_no %}">Delete</a></td>    
+                </tr>
+            
+        {% endfor %}
+    </table>
+        {% else %}
+        <p>There is no request pending</p>
+        {% endif %}
+</div>
+    
 {% endblock %}

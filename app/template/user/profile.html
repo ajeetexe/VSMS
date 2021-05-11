@@ -1,0 +1,90 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+<style>
+    .parent {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+      .img1 {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 312px;
+        border: 1px red solid;
+      }
+      .img2 {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        width: 170px;
+        height: 170px;
+        border-radius: 100%;
+        border: 1px green solid;
+      }
+      .user-detail{
+        border: 1px gray solid;
+        border-radius: 20px;
+        width: 100%;
+        margin-top: 30px;
+        padding: 10px;
+        background-color: rgba(128, 128, 128, 0.2);
+      }
+</style>
+<div class="container">
+    {% if request.user == user %}
+    <div class="parent">
+        <img class="img1" src="{{user.userprofile.background_pic.url}}" alt="" height="480">
+        <img class="img2" src="{{user.userprofile.profile_pic.url}}" alt="">
+    </div>
+
+    <div class="user-detail">
+        <table class="table">
+          <tr>
+            <th class="text-success">Usernme:</th>
+            <td>{{user}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Full Name:</th>
+            <td>{{user.first_name}} {{user.last_name}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Email:</th>
+            <td>{{user.email}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Phone:</th>
+            <td>{{user.userprofile.phone}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Gender:</th>
+            <td>{{user.userprofile.get_gender_display}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Date Of Birth:</th>
+            <td>{{user.userprofile.dob}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Address:</th>
+            <td>{{user.userprofile.address}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Date Joined:</th>
+            <td>{{user.date_joined}}</td>
+          </tr>
+          <tr>
+            <th class="text-success">Last Login:</th>
+            <td>{{user.last_login}}</td>
+          </tr>
+        </table>
+    </div>
+    {% else %}
+
+    worng
+    {% endif %}
+</div>
+{% endblock content %} 

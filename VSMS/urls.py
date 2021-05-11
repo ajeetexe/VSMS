@@ -27,6 +27,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/profile/',views.profilePage,name = 'account'),
     path('user/',views.userProfile,name='user'),
+    path('service-request/',views.ServiceRequestView.as_view(),name='service_request'),
+    path('profile/<slug>/',views.ProfileDetailView.as_view(),name='profile'),
+    # path('update/<slug>/',views.ProfileUpdateview.as_view(),name='update'),
+    path('update_profile/',views.update_profile,name='update_profile'),
+    path('change_password/',views.change_password,name='change_password'),
+    path('service-view/<slug>/',views.ServiceDetailview.as_view(),name='service_view'),
+    path('service-delete/<slug>',views.ServiceDeleteView.as_view(),name='service_delete'),
+    
 ] 
 
 
