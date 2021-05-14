@@ -1,0 +1,37 @@
+{% extends 'admin-panel/base.html' %}
+{% load bootstrap4 %}
+
+{% block branding %}Service Request Detail{% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'service_total_view' %}">Total Service</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Update Service</li>
+  </ol>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container jumbotron  mt-3">
+    {% for x in service %}
+
+    <span class="pb-2">User</span><p class="form-control p-2">{{x.user}}</p>
+    <span class="pb-2">Owner Name</span><p class="form-control p-2">{{x.vehicle_owner_name}}</p>
+    <span class="pb-2">Service Request No</span><p class="form-control p-2">{{x.service_request_no}}</p>
+    <span class="pb-2">Service Request DateTime</span><p class="form-control p-2">{{x.service_request_date}}</p>
+    <span class="pb-2">Vehicle Type</span><p class="form-control p-2">{{x.get_vehicle_type_display}}</p>
+    <span class="pb-2">Vehicle Name</span><p class="form-control p-2">{{x.vehicle_name}}</p>
+    <span class="pb-2">Vehicle Number</span><p class="form-control p-2">{{x.vehicle_number}}</p>
+    <span class="pb-2">License Number</span><p class="form-control p-2">{{x.license_number}}</p>
+    <span class="pb-2">Type of service</span><p class="form-control p-2">{{x.get_type_of_service_display}}</p>
+    <span class="pb-2">Owner Address</span><p class="form-control p-2">{{x.owner_address}}</p>
+    <span class="pb-2">Appointment Date</span><p class="form-control p-2">{{x.appointment_date}}</p>
+    {% endfor %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input class="btn btn-info" type="submit" value="Update">
+    </form>
+</div>
+{% endblock %}

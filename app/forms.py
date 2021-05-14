@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import fields, widgets
-from .models import ServiceRequest, UserProfile
+from .models import Carousel, ServiceRequest, UserProfile
 from django import forms
 
 
@@ -29,4 +29,15 @@ class UserForm1(forms.ModelForm):
 class UserForm2(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['profile_pic','background_pic','dob','phone','gender','address']
+        fields = ['profile_pic','background_pic','dob','phone','gender','address',]
+        widgets = {
+            'dob':widgets.DateInput(attrs={'type':'date'}),
+            'profile_pic':widgets.FileInput(),
+            'background_pic':widgets.FileInput(),
+        }
+
+
+class CarouserForm(forms.ModelForm):
+    class Meta:
+        model = Carousel
+        fields = ['image','title','subtitle']

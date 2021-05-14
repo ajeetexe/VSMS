@@ -1,0 +1,42 @@
+{% extends 'admin-panel/base.html' %}
+
+{% block branding %}Total Service{% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Total Service</li>
+  </ol>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+                
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">User</th>
+            <th scope="col">Owner name</th>
+            <th scope="col">Service Request No</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        {% for u in service %}
+        <tbody>
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="{% url 'service_detail_view' u.service_request_no %}">{{u.user}}</a></td>
+            <td>{{u.vehicle_owner_name}}</td>
+            <td>{{u.service_request_no}}</td>
+            <td>{{u.service_request_date}}</td>
+            <td>{{u.get_status_display}}</td>
+          </tr>
+        </tbody>
+      
+    {% endfor %}
+</div>
+{% endblock %}

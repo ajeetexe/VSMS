@@ -1,0 +1,21 @@
+{% extends 'admin-panel/base.html' %}
+
+{% block branding %}Delete Carousel{% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'carousel' %}">Carousel</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Delete</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container jumbotron mt-3">
+            <p>You sure want to Delete {{object}}</p>
+            <input class="btn btn-danger" type="submit" value="Delete">
+        </div>
+    </form>
+{% endblock %}

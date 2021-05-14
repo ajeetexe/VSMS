@@ -1,0 +1,21 @@
+{% extends 'admin-panel/base.html' %}
+{% load bootstrap4 %}
+{% block branding %} Add Mechanics {% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'mechanics' %}">Mechanics</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container jumbotron mt-3">
+            {% bootstrap_form form %}
+            <input class="btn btn-success" type="submit" value="Add">
+        </div>
+    </form>
+{% endblock %}

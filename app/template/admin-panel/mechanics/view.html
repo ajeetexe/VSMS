@@ -1,0 +1,46 @@
+{% extends 'admin-panel/base.html' %}
+{% block branding %}Mechanics{% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Mechanics</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block content %}
+<table class="table mt-3">
+    <thead class="thead-light">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+{% for x in mechanics %}
+<tbody>
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{x.full_name}}</td>
+        <td>{{x.phone}}</td>
+        <td>{{x.get_gender_display}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.address}}</td>
+        <td><a href="{% url 'update_mechanics' x.id %}">Update</a></td>
+        <td><a href="{% url 'delete_mechanics' x.id %}">Delete</a></td>
+    </tr>
+</tbody>
+{% endfor %}
+</table>
+{% endblock %}
+
+{% block link %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'add_mechanics' %}">Add</a>
+  </li>
+{% endblock %}

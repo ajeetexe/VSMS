@@ -1,0 +1,42 @@
+{% extends 'admin-panel/base.html' %}
+{% block branding %} Carousel{% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Carousel</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block content %}
+<table class="table mt-3">
+    <thead class="thead-light">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Subtitle</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+{% for x in carousel %}
+<tbody>
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td><img src="{{x.image.url}}" alt="image" width="160" height="120"></td>
+        <td>{{x.title}}</td>
+        <td>{{x.subtitle}}</td>
+        <td><a href="{% url 'update_carousel' x.id %}">Update</a></td>
+        <td><a href="{% url 'delete_carousel' x.id %}">Delete</a></td>
+    </tr>
+</tbody>
+{% endfor %}
+</table>
+{% endblock %}
+
+{% block link %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'add_carousel' %}">Add</a>
+  </li>
+{% endblock %}

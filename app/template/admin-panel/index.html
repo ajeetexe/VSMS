@@ -1,0 +1,103 @@
+{% extends 'admin-panel/base.html' %}
+
+{% block branding %} Admin Dashboard{% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb mt-3">
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+    </ol>
+</nav>{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between mt-3">
+    <div class="p-2">
+        <a href="">
+        <div class="card bg-primary bg-gradient" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-white"> Total User</h5>
+                <p class="card-text text-light">{{users.count}}</p>
+                <a href="#" class="card-link text-light">View</a>
+
+            </div>
+        </div>
+        </a>
+    </div>
+
+    <div class="p-2">
+        <a href="{% url 'service_total_view' %}">
+            <div class="card bg-info bg-gradient" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-white">Total Services</h5>
+                    <p class="card-text text-light">{{servicerequest.count}}</p>
+                    <a href="{% url 'service_total_view' %}" class="card-link text-light">View</a>
+
+                </div>
+            </div>
+        </a>
+    </div>
+
+
+    <div class="p-2">
+        <a href="">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body bg-danger bg-gradient">
+                <h5 class="card-title text-white">Pending Services</h5>
+                <p class="card-text text-light"> {{pending.count}} </p>
+                <a href="#" class="card-link text-light">View</a>
+
+            </div>
+        </div>
+        </a>
+    </div>
+
+
+    <div class="p-2">
+        <a href="">
+        <div class="card bg-success bg-gradient" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-white">Approve Services</h5>
+                <p class="card-text text-light">{{approve.count}}</p>
+                <a href="#" class="card-link text-light">View</a>
+
+            </div>
+        </div>
+        </a>
+    </div>
+
+
+</div>
+
+
+<div>
+    <h5 class="mt-3 bg-primary p-2 text-white">Recent Service Request</h3>
+        <div class="container">
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Owner name</th>
+                        <th scope="col">Service Request No</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                {% for u in recent %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{u.user}}</td>
+                        <td>{{u.vehicle_owner_name}}</td>
+                        <td>{{u.service_request_no}}</td>
+                        <td>{{u.service_request_date}}</td>
+                        <td>{{u.get_status_display}}</td>
+                    </tr>
+                </tbody>
+
+                {% endfor %}
+        </div>
+</div>
+
+
+{% endblock %}

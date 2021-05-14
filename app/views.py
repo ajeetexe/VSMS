@@ -29,13 +29,13 @@ class RegisterUserView(CreateView):
 @login_required(login_url='/login/')
 def profilePage(request):
     if request.user.is_superuser:
-        return redirect('/admin/')
+        return redirect('admin_panel')
     else:
         return redirect('user')
 
 @login_required(login_url='/login/')
 def userProfile(request):
-    return render(request=request, template_name='user/home.html',context={'service_request':ServiceRequest.objects.all()})
+    return render(request=request, template_name='user/home.html',context={'service_request':ServiceRequest.objects.all().filter(user=request.user)})
 
 
 def random_generator():
@@ -113,6 +113,7 @@ class ServiceDetailview(LoginRequiredMixin, DetailView):
 
 
 class ServiceDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = '/login'
     model = ServiceRequest
     template_name = 'user/servicerequest_confirm_delete.html'
     slug_field = 'service_request_no'

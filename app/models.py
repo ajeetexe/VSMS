@@ -1,14 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.db import models
-import uuid
-from django.db.models.fields import AutoField
 from imagekit.models import ProcessedImageField
-from imagekit.processors import SmartResize,ResizeToFill
+from imagekit.processors import ResizeToFill
 
 # Create your models here.
 class Carousel(models.Model):
-    image = models.ImageField(upload_to='carousel/%y/%m/%d')
+    image = ProcessedImageField(upload_to='carousel/%y/%m/%d',processors=[ResizeToFill(1200,600)],format='JPEG',options={'quality':80})
     title = models.CharField(max_length=150)
     subtitle = models.CharField(max_length=150)
 
@@ -31,8 +29,22 @@ class UserProfile(models.Model):
     def __str__(self) -> str:
         return str(self.user)
 
+    # def delete(self, using, keep_parents: bool):
+    #     return super().delete(using=using, keep_parents=keep_parents)
+
+        
+
     
 
+class Mechanics(models.Model):
+    full_name = models.CharField(verbose_name='Full Name',max_length=100)
+    phone = models.CharField(max_length=10)
+    email  = models.EmailField()
+    gender = models.CharField(max_length=10, choices=(('m','Male'),('f','Female'),('o','Other')))
+    address = models.TextField()
+
+    def __str__(self) -> str:
+        return self.full_name
 
 class ServiceRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -45,10 +57,11 @@ class ServiceRequest(models.Model):
     license_number = models.CharField(max_length=50)
     type_of_service = models.CharField(max_length=1,choices=(('s','Service Centre'),('h','Home Service')))
     owner_address = models.TextField()
+    mechanics_name = models.ForeignKey(Mechanics,on_delete=models.CASCADE,blank=True, null=True)
     appointment_date = models.DateField(blank=True,null=True)
     service_charge = models.IntegerField(default=0)
     parts_charge = models.IntegerField(default=0)
-    status = models.CharField(max_length=50,default='pending')
+    status = models.CharField(max_length=10, choices=(('p','Pending'),('a','Approve')),default='p')
 
 
     def __str__(self) -> str:

@@ -131,3 +131,7 @@ MEDIA_ROOT = BASE_DIR / 'media'.replace('\\','/')
 MEIDA_URL = 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'

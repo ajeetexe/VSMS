@@ -3,6 +3,7 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
+
 <div class="container">
     <h3>welcome back {{user.get_full_name}}</h2>
         {% if service_request.count > 0 %}
@@ -16,9 +17,9 @@
                 <tr>
                     <td>{{x.service_request_no}}</td>
                     <td>{{x.vehicle_owner_name}}</td>
-                    <td>{{x.status}}</td>
+                    <td>{{x.get_status_display}}</td>
                     <td><a href="{% url 'service_view' x.service_request_no %}">View</a></td>  
-                    <td><a href="{% url 'service_delete' x.service_request_no %}">Delete</a></td>    
+                       
                 </tr>
             
         {% endfor %}
