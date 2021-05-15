@@ -13,12 +13,12 @@ def create_user(sender,instance,created,**kwargs):
 
 # @receiver(pre_save,sender=User)
 # def change_user(sender, instance, **kwargs):
-#     if instance.user:
+#     if instance.username:
 #         try:
-#             old_profile_pic = UserProfile.objects.get(pk = instance.pk).profile.pic
+#             old_profile_pic = UserProfile.objects.get(user = instance).profile_pic
 #         except UserProfile.DoesNotExist:
 #             return
 #         else:
-#             new_profile_pic = instance.profile_pic
+#             new_profile_pic = instance.userprofile.profile_pic
 #             if old_profile_pic and old_profile_pic.url != new_profile_pic.url:
 #                 old_profile_pic.delete(save=False)

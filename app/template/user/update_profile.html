@@ -1,14 +1,32 @@
 {% extends 'user/base.html' %}
 {% load bootstrap4 %}
 {% block title %} Update Profile {% endblock%}
-
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'user' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'profile' user %}">Profile</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Update Profile</li>
+  </ol>
+</nav>
+{% endblock %}
 {% block content %}
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container jumbotron mt-3">
     {% bootstrap_form form1 %}
-    {% bootstrap_form form2 %}
+    {% bootstrap_label form2.profile_pic.label %}<br>
+    <img src="{{form2.instance.profile_pic.url}}" alt="Profile Picture" width="110" height="110">
+    {% bootstrap_field form2.profile_pic show_label=False %}
+    {% bootstrap_label form2.background_pic.label %}<br>
+    <img src="{{form2.instance.background_pic.url}}" alt="Background" width="320" height="120">
+    {% bootstrap_field form2.background_pic show_label=False%}
+    {% bootstrap_field form2.dob %}
+    {% bootstrap_field form2.phone %}
+    {% bootstrap_field form2.gender %}
+    {% bootstrap_field form2.address %}
     <input class="btn btn-success" type="submit" value="Update">
     </div>
+   
 </form>
 {% endblock %}

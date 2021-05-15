@@ -1,9 +1,16 @@
 {% extends 'user/base.html' %}
 {% load bootstrap4 %}
 {% block title %} Service Request {% endblock %}
-
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'user' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Service Request</li>
+  </ol>
+</nav>
+{% endblock %}
 {% block content %}
-<div class="container border border-gray rounded bg-dark text-white">
+<div class="container border border-gray rounded bg-info bg-gradient text-white">
     <form class="p-5" action="" method="post">
         {% csrf_token %}
         {% bootstrap_form form %}

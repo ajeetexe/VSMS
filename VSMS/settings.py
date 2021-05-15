@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'imagekit',
-    'app.apps.AppConfig'
+    'django_cleanup.apps.CleanupConfig',
+    'app.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
