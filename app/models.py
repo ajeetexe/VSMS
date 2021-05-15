@@ -6,13 +6,14 @@ from imagekit.processors import ResizeToFill
 import datetime
 
 # Create your models here.
-
+def carousel_directory_path(instance, filename):
+    ext = filename.split(".")[-1]
+    filename = datetime.datetime.now()
+    return "Carousel/{0}.{1}".format(filename, ext)
 
 class Carousel(models.Model):
     image = ProcessedImageField(
-        upload_to=lambda instance, filename: "Carousel/{0}.{1}".format(
-            datetime.datetime.now(), filename.split(".")[-1]
-        ),
+        upload_to=carousel_directory_path,
         processors=[ResizeToFill(1200, 600)],
         format="JPEG",
         options={"quality": 80},
