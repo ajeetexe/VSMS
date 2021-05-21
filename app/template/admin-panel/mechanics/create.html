@@ -1,10 +1,10 @@
-{% extends 'admin-panel/base.html' %}
+{% extends 'home/base.html' %}
 {% load bootstrap4 %}
 {% block branding %} Add Mechanics {% endblock %}
 {% block breadcumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{% url 'mechanics' %}">Mechanics</a></li>
     <li class="breadcrumb-item active" aria-current="page">Add</li>
   </ol>

@@ -1,16 +1,16 @@
-{% extends 'admin-panel/base.html' %}
+{% extends 'home/base.html' %}
 {% block branding %}Mechanics{% endblock %}
 {% block breadcumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Dashboard</a></li>
     <li class="breadcrumb-item active" aria-current="page">Mechanics</li>
   </ol>
 </nav>
 {% endblock %}
 {% block content %}
 <table class="table mt-3">
-    <thead class="thead-light">
+    <thead class="thead-transparent">
         <tr>
         <th scope="col">#</th>
         <th scope="col">Full Name</th>
@@ -40,7 +40,9 @@
 {% endblock %}
 
 {% block link %}
-<li class="nav-item">
-    <a class="nav-link" href="{% url 'add_mechanics' %}">Add</a>
-  </li>
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div class="p-2 bd-highlight"><a class="btn btn-info border rounded-pill px-5" href="{% url 'add_mechanics' %}">Add</a></div>
+</div>
 {% endblock %}
+
+

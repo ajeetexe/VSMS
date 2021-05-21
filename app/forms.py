@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.forms import fields, widgets
 from .models import Carousel, ServiceRequest, UserProfile
 from django import forms
+import datetime
 
 
 class UserRegisterForm(UserCreationForm):
@@ -25,8 +26,14 @@ class UserForm1(forms.ModelForm):
         model = User
         fields = ['first_name','last_name','email']
 
-
 class UserForm2(forms.ModelForm):
+    # dob = forms.DateField()
+
+    # def clean_dob(self):
+    #     dob = self.changed_data['dob']
+    #     if dob > datetime.date.today():
+    #         raise forms.ValidationError('')
+    #     return dob
     class Meta:
         model = UserProfile
         fields = ['profile_pic','background_pic','dob','phone','gender','address',]

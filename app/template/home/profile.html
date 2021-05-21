@@ -1,10 +1,10 @@
-{% extends 'admin-panel/base.html' %}
+{% extends 'home/base.html' %}
 
 {% block branding %}Admin Profile{% endblock %}
 {% block breadcumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item"><a href="{% url 'admin_panel' %}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Dashboard</a></li>
     <li class="breadcrumb-item active" aria-current="page">Profile</li>
   </ol>
 </nav>
@@ -94,11 +94,16 @@
     worng
     {% endif %}
 </div>
-{% endblock content %} 
+{% endblock content %}
 
 
-{% block link%} 
-<li class="nav-item">
-  <a class="nav-link" href="{% url 'admin_profile_update' %}">Update Profile</a>
-</li>
+
+{% block link %}
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div class="p-2 bd-highlight"><a class="btn btn-info border rounded-pill px-5" href="{% url 'update_profile' %}">Update</a></div>
+  <div class="p-2 bd-highlight"><a class="btn btn-info border rounded-pill px-5" href="{% url 'change_password' %}">Change Password</a></div>
+</div>
+  
 {% endblock %}
+
+

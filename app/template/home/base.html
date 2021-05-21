@@ -7,120 +7,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VSMS</title>
-  <link rel="stylesheet" href="{% static 'app/css/bootstrap-grid.min.css' %}">
-  <link rel="stylesheet" href="{% static 'app/css/bootstrap-reboot.min.css' %}">
   <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'app/css/custom.css' %}">
+  <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
   
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <h1><a class="navbar-brand" href="#">Vehicle Service Management System</a></h1>
+  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Vehicle Service Management System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
+      <ul class="navbar-nav ml-auto px-3">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.view_name == 'home' %} active {% endif %}" href="{% url 'home' %}">Home</a>
+        </li>
+        {% if request.user.is_authenticated %}
+          {% if request.user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.view_name == 'carousel' %} active {% endif %}" href="{% url 'carousel' %}">Carousel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.view_name == 'mechanics' %} active {% endif %}" href="{% url 'mechanics' %}">Mechanics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.view_name == 'profile' %} active {% endif %}" href="{% url 'profile' slug=user %}" >Profile</a>
+
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.view_name == 'service_request' %} active {% endif %}" href="{% url 'service_request' %}">Service Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.view_name == 'profile' %} active {% endif %}" href="{% url 'profile' slug=user %}">Profile</a>
+          </li>
+          
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.view_name == 'logout' %} active {% endif %}" href="{% url 'logout' %}">Logout</a>
+          </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.view_name == 'register' %} active {% endif %}" href="{% url 'register' %}">Registration</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Registration</a>
+          <a class="nav-link {% if request.resolver_match.view_name == 'login' %} active {% endif %}" href="{% url 'login' %}">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
-        </li>
+        {% endif %}
       </ul>
 
     </div>
   </nav>
-
-  {% block content %} {% endblock %}
   
-  <script src="{% static 'app/js/jquery-3.4.1.slim.js' %}"></script>
-  <script src="{% static 'app/js/popper.min.js' %}"></script>
-  <script src="{% static 'app/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+  
+{% block breadcumb %} {% endblock %}
+{% block link %} {% endblock %}
+{% block content %} {% endblock %}
+{% block footer %} {% endblock %}  
+  
+  <script src="{% static 'app/js/bootstrap.bundle.js' %}"></script>
+  
 </body>
-
-
-<footer class="mt-5 container-fluid border">
-  <div class="d-flex  flex-row">
-    <div class="p-2 flex-fill d-flex">
-      <div class="p-2">
-        <img src="{% static 'app/img/footer/house.png' %}" width="32" height="32">
-      </div>
-      <div class="p-2">
-        <h3>Jehanabad BR 804408</h3>
-        <h3>Near Railways Station Road</h3>
-      </div>
-    </div>
-
-    <div class="p-2 flex-fill d-flex">
-      <div class="p-2">
-        <img src="{% static 'app/img/footer/call.png' %}" width="32" height="32">
-      </div>
-      <div class="p-2">
-        <h3>Feel Free To Call Us Now</h3>
-        <h3>(1064) 222244</h3>
-      </div>
-    </div>
-
-    <div class="p-2 flex-fill d-flex">
-      <div class="p-2">
-        <img src="{% static 'app/img/footer/tow-truck.png' %}" width="32" height="32">
-      </div>
-      <div class="p-2">
-        <h3>24/7 Roadside Assistance</h3>
-        <h3>(1064) 222233</h3>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="card-group">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title border-bottom border-dark">About Us</h5>
-        <p class="card-text">Jehanabad Bihar 804408 </p>
-        <p class="card-text">Near Railways Station Road </p>
-        <p class="card-text">Call: (1064) 222244</p>
-        <p class="card-text">Assistance: (1064) 222233</p>
-        <p class="card-text">Email: care@service.com</p>
-        
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title border-bottom border-dark">Our Services</h5>
-        <p class="card-text"><a class="text-dark" href="">Preventative Mantance Service</a></p>
-        <p class="card-text"><a class="text-dark" href="">Body Repair</a></p>
-        <p class="card-text"><a class="text-dark" href="">Accesories</a></p>
-        <p class="card-text"><a class="text-dark" href="">Air Conditioning System</a></p>
-        <p class="card-text"><a class="text-dark" href="">Car Care</a></p>
-        <p class="card-text"><a class="text-dark" href="">Running Repairs</a></p>
-        <p class="card-text"><a class="text-dark" href="">Service Maintance Package</a></p>
-        <p class="card-text"><a class="text-dark" href="">Wheel Care</a></p>
-        
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title border-bottom border-dark">Hour</h5>
-        <p class="card-text"><b>Monday:    </b>9:00 AM to 11:30 PM</p>
-        <p class="card-text"><b>Tuesday:   </b>9:00 AM to 11:30 PM</p>
-        <p class="card-text"><b>Wednesday: </b>9:00 AM to 11:30 PM</p>
-        <p class="card-text"><b>Thursday:  </b>9:00 AM to 11:30 PM</p>
-        <p class="card-text"><b>Friday:    </b>9:00 AM to 11:30 PM</p>
-        <p class="card-text"><b>Saturday:  </b>9:00 AM to 1:30 PM</p>
-        <p class="card-text"><b>Sunday:    </b>Closed</p> 
-      </div>
-    </div>
-  </div>
-  <p class="text-center p-3">Copyright &#169; 2021 by Ajeet. All Rights Reserved.</p>
-</footer>
 
 </html>

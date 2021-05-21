@@ -1,4 +1,4 @@
-{% extends 'admin-panel/base.html' %}
+{% extends 'home/base.html' %}
 
 {% block branding %} Admin Dashboard{% endblock %}
 {% block breadcumb %}
@@ -11,12 +11,12 @@
 
 <div class="d-flex justify-content-between mt-3">
     <div class="p-2">
-        <a href="">
+        <a href="{% url 'userlist' %}">
         <div class="card bg-primary bg-gradient" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title text-white"> Total User</h5>
                 <p class="card-text text-light">{{users.count}}</p>
-                <a href="#" class="card-link text-light">View</a>
+                <a href="{% url 'userlist' %}" class="card-link text-light">View</a>
 
             </div>
         </div>
@@ -38,12 +38,12 @@
 
 
     <div class="p-2">
-        <a href="">
+        <a href="{% url 'pending' %}">
         <div class="card" style="width: 18rem;">
             <div class="card-body bg-danger bg-gradient">
                 <h5 class="card-title text-white">Pending Services</h5>
                 <p class="card-text text-light"> {{pending.count}} </p>
-                <a href="#" class="card-link text-light">View</a>
+                <a href="{% url 'pending' %}" class="card-link text-light">View</a>
 
             </div>
         </div>
@@ -52,12 +52,12 @@
 
 
     <div class="p-2">
-        <a href="">
+        <a href="{% url 'approve' %}">
         <div class="card bg-success bg-gradient" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title text-white">Approve Services</h5>
                 <p class="card-text text-light">{{approve.count}}</p>
-                <a href="#" class="card-link text-light">View</a>
+                <a href="{% url 'approve' %}" class="card-link text-light">View</a>
 
             </div>
         </div>

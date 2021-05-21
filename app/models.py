@@ -4,13 +4,19 @@ from django.db import models
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 import datetime
-
+from django.core.exceptions import ValidationError
 # Create your models here.
+
+
 def carousel_directory_path(instance, filename):
     ext = filename.split(".")[-1]
     filename = datetime.datetime.now()
     return "Carousel/{0}.{1}".format(filename, ext)
 
+def dob(value):
+    if value > datetime.date.today():
+        raise ValidationError('')
+    return value
 class Carousel(models.Model):
     image = ProcessedImageField(
         upload_to=carousel_directory_path,
@@ -49,7 +55,7 @@ class UserProfile(models.Model):
         format="JPEG",
         options={"quality": 80},
     )
-    dob = models.DateField(verbose_name="Date Of Birth", blank=True, null=True)
+    dob = models.DateField(verbose_name="Date Of Birth", blank=True, null=True,validators=[dob,])
     phone = models.CharField(max_length=256, blank=True, null=True)
     gender = models.CharField(
         max_length=1,

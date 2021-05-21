@@ -1,10 +1,10 @@
-{% extends 'user/base.html' %}
+{% extends 'home/base.html' %}
 {% load bootstrap4 %}
-{% block title %} Update Profile {% endblock%}
+{% block branding %} Update Profile {% endblock%}
 {% block breadcumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item"><a href="{% url 'user' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
     <li class="breadcrumb-item"><a href="{% url 'profile' user %}">Profile</a></li>
     <li class="breadcrumb-item active" aria-current="page">Update Profile</li>
   </ol>

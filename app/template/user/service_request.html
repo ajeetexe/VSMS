@@ -1,10 +1,10 @@
-{% extends 'user/base.html' %}
+{% extends 'home/base.html' %}
 {% load bootstrap4 %}
-{% block title %} Service Request {% endblock %}
+{% block branding %} Service Request {% endblock %}
 {% block breadcumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item"><a href="{% url 'user' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Service Request</li>
   </ol>
 </nav>

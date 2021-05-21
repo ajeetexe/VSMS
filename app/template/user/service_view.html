@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'app/css/bootstrap-grid.min.css' %}">
-    <link rel="stylesheet" href="{% static 'app/css/bootstrap-reboot.min.css' %}">
-    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'home/base.html'%}
+{% block branding %}Service Request Detail{% endblock %}
+{% block breadcumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Service Request Detail</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block content %}
     <div class="container border border-success mt-5">
-        <a class="btn btn-primary m-3" href="{% url 'user' %}">Home</a>
-        <a class="btn btn-primary m-3" href="{% url 'user' %}">Print</a>
+        
         <table class="table">
             <tr>
                 <th>Service Request No</th>
@@ -56,6 +53,10 @@
                 <td>{{servicerequest.owner_address}}</td>
             </tr>
             <tr>
+                <th>Mechanics Name</th>
+                <td>{{servicerequest.mechanics_name}}</td>
+            </tr>
+            <tr>
                 <th>Appointment Date</th>
                 <td>{{servicerequest.appointment_date}}</td>
             </tr>
@@ -77,5 +78,4 @@
             </tr>
         </table>
     </div>
-</body>
-</html>
+{% endblock %}
