@@ -129,7 +129,7 @@ class ServiceRequestView(LoginRequiredMixin, CreateView):
     model = ServiceRequest
     form_class = ServiceRequestForm
     template_name = "user/service_request.html"
-    success_url = reverse_lazy("user")
+    success_url = reverse_lazy("home")
 
     def form_valid(self, form):
         form.instance.user = self.request.user
