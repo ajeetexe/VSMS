@@ -1,14 +1,10 @@
-{% extends 'home/base.html' %}
-
-{% block title %} Home {% endblock %}
-{% block breadcumb %}
+{% extends 'home/base.html' %} {% block title %} Home {% endblock %} {% block breadcumb %}
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item active" aria-current="page">Home</li>
-  </ol>
+    <ol class="breadcrumb mt-3">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
 </nav>
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 
 <div class="container">
     <h3>welcome back {{user.get_full_name}}</h2>
@@ -19,20 +15,21 @@
                 <th>Owner Name</th>
                 <th>Status</th>
             </tr>
-        {% for x in service_request %}
-                <tr>
-                    <td>{{x.service_request_no}}</td>
-                    <td>{{x.vehicle_owner_name}}</td>
-                    <td>{{x.get_status_display}}</td>
-                    <td><a href="{% url 'service_view' x.service_request_no %}">View</a></td>  
-                       
-                </tr>
-            
-        {% endfor %}
-    </table>
+            {% for x in service_request %}
+            <tr>
+                <td>{{x.service_request_no}}</td>
+                <td>{{x.vehicle_owner_name}}</td>
+                <td>{{x.get_status_display}}</td>
+                <td>
+                    <a class="text-white" href=" {% url 'service_view' x.service_request_no %} ">View</a></td>
+
+            </tr>
+
+            {% endfor %}
+        </table>
         {% else %}
         <p>There is no request pending</p>
         {% endif %}
 </div>
-    
+
 {% endblock %}

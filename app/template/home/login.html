@@ -1,16 +1,14 @@
-{% extends 'home/base.html' %}
-{% load bootstrap4 %}
-
-{% block content %}
+{% extends 'home/base.html' %} {% load bootstrap4 %} {% block content %}
 <div class="banner-area">
     <div class="content-area">
         <div class="content">
             <form action="{% url 'login' %}" method="post">
                 {% csrf_token %}
-                {% bootstrap_form form show_label=False %}
+                {% bootstrap_form form show_label=False %} 
                 {% bootstrap_button "Log in" button_type="submit" button_class="btn-primary btn-lg btn-block my-2" %}
             </form><br>
-            <a class="text-primary" href="{% url 'change_password' %}">Forgotten Password?</a> <hr>
+            <a class="text-primary" href="{% url 'change_password' %}">Forgotten Password?</a>
+            <hr>
             <a class="btn btn-success btn-block" href="{% url 'register' %}">Register</a>
         </div>
     </div>

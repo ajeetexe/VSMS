@@ -15,10 +15,10 @@
 
 {% block content %}
 
-<div class="container jumbotron mt-3 bg-info bg-gradient">
+<div class="container">
     <table class="table table-borderless">
         <tr>
-            <th class="text-white">Username</th>
+            <th>Username</th>
             <td>{{userdetail.username}}</td>
         </tr>
         <tr>
@@ -55,7 +55,7 @@
         </tr>
     </table>
 </div>
-<div class="container jumbotron mt-3 bg-primary bg-gradient">
+<div class="container">
     
     {% for x in service %}
     <table class="table table-borderless">
@@ -64,52 +64,68 @@
         </tr>
             <tr>
                 <th scope="col">Username</th>
+                <td>{{x.user}}</td>
             </tr>
             <tr>
                 <th scope="col">Vehicle Owner Name</th>
+                <td>{{x.vehicle_owner_name}}</td>
             </tr>
             <tr>
                 <th scope="col">Service Request No</th>
+                <td>{{x.service_request_no}}</td>
             </tr>
             <tr>
                 <th scope="col">Vehicle Type</th>
+                <td>{{x.get_vehicle_type_display}}</td>
             </tr>
             <tr>
                 <th scope="col">Vehicle Name</th>
+                <td>{{x.vehicle_name}}</td>
             </tr>
             <tr>
                 <th scope="col">Vehicle Number</th>
+                <td>{{x.vehicle_number}}</td>
             </tr>
 
             <tr>
                 <th scope="col">License Number</th>
+                <td>{{x.license_number}}</td>
             </tr>
             <tr>
                 <th scope="col">Type of service</th>
+                <td>{{x.get_type_of_service_display}}</td>
             </tr>
             <tr>
                 <th scope="col">Service request Date</th>
+                <td>{{x.service_request_date}}</td>
             </tr>
             <tr>
                 <th scope="col">Owner Address</th>
+                <td>{{x.owner_address}}</td>
             </tr>
             <tr>
                 <th scope="col">Mechanics Name</th>
+                <td>{{x.mechanics_name}}</td>
             </tr>
             <tr>
                 <th scope="col">Appointment Date</th>
+                <td>{{x.appointment_date}}</td>
             </tr>
             <tr>
                 <th scope="col">Service Charge</th>
+                <td>{{x.service_charge}}</td>
             </tr>
             <tr>
                 <th scope="col">Parts Charge</th>
+                <td>{{x.parts_charge}}</td>
             </tr>
             <tr>
                 <th scope="col">Total Charge</th>
+                <td>{{x.sum}}</td>
             </tr>
             <tr>
                 <th scope="col">Status</th>
+                <td>{{x.get_status_display}}</td>
             </tr>
         {% endfor %}
                 

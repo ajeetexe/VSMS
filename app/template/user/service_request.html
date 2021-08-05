@@ -1,20 +1,14 @@
-{% extends 'home/base.html' %}
-{% load bootstrap4 %}
-{% block branding %} Service Request {% endblock %}
-{% block breadcumb %}
+{% extends 'home/base.html' %} {% load bootstrap4 %} {% block branding %} Service Request {% endblock %} {% block breadcumb %}
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Service Request</li>
-  </ol>
+    <ol class="breadcrumb mt-3">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Service Request</li>
+    </ol>
 </nav>
-{% endblock %}
-{% block content %}
-<div class="container border border-gray rounded bg-info bg-gradient text-white">
+{% endblock %} {% block content %}
+<div class="container  text-white">
     <form class="p-5" action="" method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% bootstrap_button "Submit" button_type="submit" button_class="btn btn-success btn-block" %}
+        {% csrf_token %} {% bootstrap_form form %} {% bootstrap_button "Submit" button_type="submit" button_class="btn btn-success btn-block" %}
     </form>
 </div>
 {% endblock %}

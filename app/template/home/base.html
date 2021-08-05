@@ -1,79 +1,72 @@
-<!DOCTYPE html>
-{% load bootstrap4 %}
-{% load static %}
+<!DOCTYPE html> {% load bootstrap4 %} {% load static %}
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VSMS</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'app/css/custom.css' %}">
-  <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSMS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'app/css/custom.css' %}">
+    <link rel="shortcut icon" href="{% static 'app/img/favicon.ico' %}" type="image/x-icon">
+
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Vehicle Service Management System</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<body class="cool-sky">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Vehicle Service Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto px-3">
-        <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.view_name == 'home' %} active {% endif %}" href="{% url 'home' %}">Home</a>
-        </li>
-        {% if request.user.is_authenticated %}
-          {% if request.user.is_superuser %}
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name == 'carousel' %} active {% endif %}" href="{% url 'carousel' %}">Carousel</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name == 'mechanics' %} active {% endif %}" href="{% url 'mechanics' %}">Mechanics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name == 'profile' %} active {% endif %}" href="{% url 'profile' slug=user %}" >Profile</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto px-3">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'home' %} active {% endif %}" href="{% url 'home' %}">Home</a>
+                </li>
+                {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'carousel' %} active {% endif %}" href="{% url 'carousel' %}">Carousel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'mechanics' %} active {% endif %}" href="{% url 'mechanics' %}">Mechanics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'profile' %} active {% endif %}" href="{% url 'profile' slug=user %}">Profile</a>
 
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name == 'service_request' %} active {% endif %}" href="{% url 'service_request' %}">Service Request</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name == 'profile' %} active {% endif %}" href="{% url 'profile' slug=user %}">Profile</a>
-          </li>
-          
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name == 'logout' %} active {% endif %}" href="{% url 'logout' %}">Logout</a>
-          </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.view_name == 'register' %} active {% endif %}" href="{% url 'register' %}">Registration</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.resolver_match.view_name == 'login' %} active {% endif %}" href="{% url 'login' %}">Login</a>
-        </li>
-        {% endif %}
-      </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'service_request' %} active {% endif %}" href="{% url 'service_request' %}">Service Request</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'profile' %} active {% endif %}" href="{% url 'profile' slug=user %}">Profile</a>
+                </li>
 
-    </div>
-  </nav>
-  
-  
-{% block breadcumb %} {% endblock %}
-{% block link %} {% endblock %}
-{% block content %} {% endblock %}
-{% block footer %} {% endblock %}  
-  
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="{% static 'app/js/bootstrap.bundle.js' %}"></script>
-  
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'logout' %} active {% endif %}" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'register' %} active {% endif %}" href="{% url 'register' %}">Registration</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'login' %} active {% endif %}" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+
+    {% block breadcumb %} {% endblock %} {% block link %} {% endblock %} {% block content %} {% endblock %} {% block footer %} {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="{% static 'app/js/bootstrap.bundle.js' %}"></script>
+
 </body>
 
 </html>
