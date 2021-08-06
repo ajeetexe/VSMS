@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'ej%(i0%#hwywf1!fazwjiqd)iw0gvj6km7ou1$#jr)+7hvo23t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://vsmsajeet.herokuapp.com',]
 
