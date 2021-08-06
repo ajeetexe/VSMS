@@ -1,1 +1,1 @@
-web: gunicorn vsms.wsgi --log-file -
+web: gunicorn VSMS.wsgi --log-file -
