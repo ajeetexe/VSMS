@@ -73,7 +73,7 @@ class UserProfile(models.Model):
 
 
 class Mechanics(models.Model):
-    full_name = models.CharField(verbose_name="Full Name", max_length=100)
+    full_name = models.CharField(verbose_name="Full Name", max_length=200)
     phone = models.CharField(max_length=10)
     email = models.EmailField()
     gender = models.CharField(
@@ -82,7 +82,7 @@ class Mechanics(models.Model):
     address = models.TextField()
 
     def __str__(self) -> str:
-        return self.full_name
+        return self.email
 
 
 class ServiceRequest(models.Model):
