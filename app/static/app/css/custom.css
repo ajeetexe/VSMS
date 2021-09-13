@@ -10,10 +10,10 @@ a{
 .banner-area {
     width: 100%;
     height: 100vh;
-    background: #2980B9;
-    /* fallback for old browsers */
+    background: #FFF;
+    /* fallback for old browsers *g/
     background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
-    /* Chrome 10-25, Safari 5.1-6 */
+    /* Chrome 10-25, Safari 5.1-6 *g/
     background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -31,14 +31,14 @@ a{
     position: relative;
     margin: 6% auto;
     padding: 2%;
-    /* border: 1px indigo solid; */
+    /* border: 1px indigo solid; *g/
     border-radius: 20px;
     background: #1c92d2;
-    /* fallback for old browsers */
+    /* fallback for old browsers *g/
     background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);
-    /* Chrome 10-25, Safari 5.1-6 */
+    /* Chrome 10-25, Safari 5.1-6 *g/
     background: linear-gradient(to right, #f2fcfe, #1c92d2);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
 }
 
 .cool-sky {
