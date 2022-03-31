@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'imagekit',
     'django_cleanup.apps.CleanupConfig',
     'app.apps.AppConfig',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'app/static',]
+
+AWS_ACCESS_KEY_ID = "AKIA45VTZAHSNOWMSEKK"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "vsms"
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = "us-east-1"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+
+
 
 MEDIA_ROOT = BASE_DIR / 'media'.replace('\\','/')
 MEIDA_URL = 'media'
